@@ -1,0 +1,41 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  background: #eee;
+  display: grid;
+  grid-template:
+    "header" 50px
+    "main" 50px
+    "sidebar" 50px
+    "footer" 50px
+    / 100%
+}
+
+.item-1 {
+  background: hsl(300, 80%, 30%);
+  grid-area: header;
+}
+.item-2 {
+  background: hsl(300, 80%, 40%);
+  grid-area: main;
+}
+.item-3 {
+  background: hsl(300, 80%, 50%);
+  grid-area: sidebar;
+}
+.item-4 {
+  background: hsl(200, 80%, 30%);
+  grid-area: footer;
+}
+
+@media (min-width: 570px) {
+  .container {
+    grid-template:
+      "header header"  50px
+      "main   sidebar" 50px
+      "footer footer"  50px
+      / 1fr 200px;
+  }
+}

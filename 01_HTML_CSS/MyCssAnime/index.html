@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Anime</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="box"></div>
+    <script type="text/javascript">
+      (() => {
+        'use strict';
+        document.querySelector('body').addEventListener('click', () => {
+          document.querySelectorAll('.box').forEach((box) => {
+            box.classList.add('moved');
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

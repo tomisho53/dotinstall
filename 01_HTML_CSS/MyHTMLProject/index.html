@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ドットインストール</title>
+    <meta name="description" content="プログラミング学習サイト">
+    <link rel="icon" href="favicon.ico">
+  </head>
+  <body>
+
+    <header>
+      <img src="img/logo.png" alt="ドットインストールのロゴです" width="240" height="40">
+
+      <nav>
+        <ul>
+          <li><a href="#feature">サイトの特徴</a></li>
+          <li><a href="#ranking">人気ランキング</a></li>
+        </ul>
+      </nav>
+      <!-- <img src="img/log.png" alt="ドットインストールのロゴです"> -->
+    </header>
+
+    <section>
+      <h1>ドットインストール</h1>
+      <p>プログラミング学習サイト</p>
+
+      <section>
+        <h2 id="feature">サイトの特徴</h2>
+        <p>こういうサイトの特徴です</p>
+        <hr>
+        <p>こういうサイトの特徴です<br>こういう特徴です。<strong>ここがポイントです</strong></p>
+        <blockquote cite="http://">
+          HTMLは大事ですよ！！ by ドットインストール
+        </blockquote>
+      </section>
+
+      <section>
+        <h2 id="ranking">人気ランキング</h2>
+        <p>人気ランキングです</p>
+        <ol reversed start="10">
+          <li>HTML入門</li>
+          <li>CSS入門</li>
+          <li>JavaScript入門</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>レッスン一覧</h2>
+        <ul>
+          <li>
+            HTML入門
+            <ul>
+              <li>基礎文法</li>
+              <li>応用文法</li>
+            </ul>
+          </li>
+          <li>CSS入門</li>
+          <li>JavaScript入門</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>よくある質問</h2>
+        <dl>
+          <dt>質問１</dt>
+          <dd>回答１</dd>
+          <dt>質問２</dt>
+          <dd>回答２−１</dd>
+          <dd>回答２−２</dd>
+          <dt>質問３−１</dt>
+          <dt>質問３−２</dt>
+          <dd>回答３</dd>
+        </dl>
+        <p><a href="more_lessons.html">もっと見る</a></p>
+      </section>
+
+      <section>
+        <h2>沿革</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>年</th>
+              <th>出来事</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2015</td>
+              <td>会社設立</td>
+            </tr>
+            <tr>
+              <td>2018</td>
+              <td>サイトリニューアル</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>お問い合わせ</h2>
+        <form class="" action="index.html" method="post">
+          <!-- <label>氏名<input type="text"></label> -->
+          <p>
+            <label for="name">氏名</label>
+            <!-- <input type="text" id="name" value="名無しです"> -->
+            <input type="text" id="name" placeholder="本名を入力してください">
+          </p>
+          <p>
+            <label for="pwd">パスワード</label>
+            <input type="password" name="" value="" id="pwd">
+          </p>
+          <p>
+            <label for="product"></label>
+            <select class="" name="" id="product" size="3" multiple>
+              <option>Procudt A</option>
+              <option>Procudt B</option>
+              <option selected>Procudt C</option>
+              <option>Procudt D</option>
+              <option>Procudt F</option>
+            </select>
+          </p>
+          <p>
+            <fieldset>
+              <legend>一番好きなスマホ</legend>
+              <input type="radio" name="phone" id="andoroid"><label for="andoroid">Andoroid</label>
+              <input type="radio" name="phone" id="iphone" checked><label for="iphone">iPhone</label>
+              <input type="radio" name="phone" id="other"><label for="other">その他</label>
+            </fieldset>
+            <!-- <fieldset>
+              <legend>お使いのスマホ（複数選択可）</legend>
+              <input type="checkbox" id="andoroid"><label for="andoroid">Andoroid</label>
+              <input type="checkbox" id="iphone" checked><label for="iphone">iPhone</label>
+              <input type="checkbox" id="other"><label for="other">その他</label>
+            </fieldset> -->
+          </p>
+          <p>
+            <label for="message">メッセージ</label>
+            <textarea id="message" placeholder="140字以内でお願いします。"></textarea>
+          </p>
+          <p>
+            <!-- <button>送信</button> -->
+            <input type="submit" name="" value="送信">
+          </p>
+        </form>
+      </section>
+
+      <section>
+        <h1>最近のブログ記事</h1>
+
+        <article>
+          <h1>お知らせです</h1>
+          <p>お知らせ！お知らせ！お知らせ！お知らせ！お知らせ！お知らせ！</p>
+          <div style="background: pink">
+            <p>お知らせ！お知らせ！お知らせ！お知らせ！お知らせ！お知らせ！</p>
+          </div>
+          <p><span style="color:red">お</span>知らせ！お知らせ！お知らせ！お知らせ！お知らせ！お知らせ！</p>
+          <pre>
+function a(){
+  return a;
+}
+          </pre>
+          <footer>
+            <p>投稿日：<time>2019-09-14</time></p>
+          </footer>
+        </article>
+
+        <article>
+          <h1>お知らせです２</h1>
+          <p>お知らせ！お知らせ！お知らせ！お知らせ！お知らせ！お知らせ！&lt;br&gt;がおすすめです。</p>
+          <footer>
+            <p>投稿日：<time>2019-09-13</time></p>
+          </footer>
+        </article>
+
+      </section>
+
+      <aside>
+        <h1>広告です</h1>
+        <p>広告です広告です広告です広告です広告です</p>
+      </aside>
+
+    </section>
+
+
+    <footer>
+      <ul>
+        <li><a href="https://twitter.com/dotinstall" target="_blank">Twiiter</a></li>
+        <li><a href="mailto:taguchi@gmail.com" target="_blank">Mail</a></li>
+      </ul>
+
+      <p><a href="#">TOPへ</a></p>
+      <p>&copy; dotinstall.com</p>
+    </footer>
+
+  </body>
+</html>

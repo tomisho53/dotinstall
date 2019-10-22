@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- iosのアイコン設定 -->
+    <link rel="apple-touch-icon" href="images/icon.jpg" sizes="192x192"/>
+
+    <!-- iosのスプラッシュ画面設定 -->
+    <link rel="apple-touch-startup-image" href="images/launch-640x1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-750x1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-1242x2208.jpg" media="(device-width: 414x) and (device-height: 736x) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-828x1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-1242x2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+
+    <!-- PWAのmanifest.json -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: "c00df44b-e90f-49d2-af8b-248e27009f0a"
+        });
+    });
+    </script> -->
+</head>
+<body>
+    <div class="wrapper">
+        <div id="countDisplay" class="count-display">0</div>
+        <div class="btns">
+            <button id="countDown" class="btn">減らす</button>
+            <button id="countUp" class="btn">増やす</button>
+        </div>
+        <button id="countReset"  class="reset">リセット</button>
+    </div>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('serviceworker.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+            // navigator.serviceWorker.ready -> ServiceWorker が activeになるまでコードの実行を遅らせる
+            navigator.serviceWorker.ready
+                    .then((registration) => {
+                      // 成功した場合の処理
+                      // ログ出力
+                      console.log('ServiceWorker ready complate!!');
+
+                      // ボタン押下時の処理追加
+                      document.getElementById('countUp').addEventListener('click', () => {
+                        // ここでIndexedDBなどにデータを保存しておく
+
+                        // オブジェクトストアを読み書き権限付きで使用することを宣言
+                        var transaction = db.transaction(['egawa'],'readwrite');
+                        // オブジェクトストアの取り出し
+                        var egawaStore = transaction.objectStore('egawa');
+
+                        var min = 1 ;
+                        var max = 5 ;
+                        var a = Math.floor( Math.random() * (max + 1 - min) ) + min ;
+                        var name = '';
+                        switch (a) {
+                          case 1:
+                            name = 'hajime';
+                            break;
+                          case 2:
+                            name = 'kyoko';
+                            break;
+                          case 3:
+                            name = 'kurumi';
+                            break;
+                          case 4:
+                            name = 'mikiko';
+                            break;
+                          case 5:
+                            name = 'hiroshi';
+                            break;
+                          default:
+                            name = '';
+                            break;
+
+                        }
+
+                        // データストアへ書き込み
+                        var putReq = egawaStore.put({
+                            id: 1,
+                            name: name
+                        });
+                        putReq.onsuccess = function() {
+                          console.log('書き込み成功！！ -> ' + name);
+                        };
+                        putReq.onerror = function(event) {
+                          console.log('書き込み失敗！！');
+                        };
+
+                        // 保存が終わったら、↓を呼ぶ
+                        registration.sync.register('egawa')
+                          .then(() => {
+                            // sync登録に成功した場合の処理
+                            console.log('sync registerd');
+                          })
+                          .catch(console.error.bind(console));
+                        }, false);
+
+                     })
+                     .catch(console.error.bind(console));
+
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    }
+    </script>
+    <!-- <script src="js/count.js"></script> -->
+    <script src="js/db.js"></script>
+
+</body>
+</html>

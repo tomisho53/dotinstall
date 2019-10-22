@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Variables</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <h1>My Site</h1>
+    <p>Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. </p>
+    <div id="btn">
+      Button
+    </div>
+    <script type="text/javascript">
+      (() => {
+        'use strict';
+        document.getElementById('btn').addEventListener('click', () => {
+          document.documentElement.style.setProperty('--my-hue', Math.floor(Math.random() * 360));
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+/* CSSは下の行が優先される */
+/* 小さいサイズのデザインから作成するのがモバイルファースト */
+/* common */
+/* small screen */
+body {
+  margin: 0;
+}
+
+aside {
+  display: none;
+}
+
+.image {
+  background: pink;
+  height: 100px;
+}
+.text {
+  background: silver;
+  height: 100px;
+}
+
+
+/* @media (min-width: 0px) and (max-width: 599px) {
+  ここは共通部分で適用されるので記載は省略する
+  以下は記載する。
+} */
+/* @media (min-width: 600px) and (max-width: 799px) { */
+/* medium screeen */
+@media (min-width: 600px) {
+  section {
+    display: flex;
+  }
+
+  .image {
+    width: 200px;
+  }
+
+  .text {
+    flex: 1;
+  }
+
+}
+
+/* large screen */
+@media (min-width: 800px) {
+  section {
+    width: 800px;
+    margin: 0 auto;
+  }
+  aside{
+    display: block;
+    background: plum;
+    width: 160px;
+  }
+}
