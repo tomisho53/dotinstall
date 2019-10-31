@@ -46,6 +46,7 @@
 
       const main = document.querySelector('main');
       main.appendChild(section);
+      
     }
 
     // ランダムな画像を取得する
