@@ -1,0 +1,365 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grid Test</title>
+  </head>
+  <body>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .membergrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 300px);
+        justify-content: center;
+      }
+
+      .memberitem {
+        text-align: center;
+        height: 400px;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 0px;
+      }
+
+      .img-box {
+        position: relative;
+      }
+
+      .img-box .active {
+        position: absolute;
+        left: 60px;
+        top: 0;
+        opacity: 0;
+        transition: 0.5s;
+        transition-property: opacity;
+      }
+      .img-box:hover .active {
+        opacity: 1;
+      }
+
+      .memberitem img {
+        width: 160px;
+        border-radius: 50%;
+      }
+
+      .memberitem > h1 {
+        font-size: 16px;
+      }
+
+      .memberitem > h2 {
+        font-size: 16px;
+        margin: 0;
+      }
+      .memberitem > h2 > span {
+        font-size: 12px;
+        color: gray;
+        margin: 0;
+      }
+
+      .memberitem > ul {
+        list-style: none;
+        text-align: left;
+      }
+    </style>
+    
+    <div class="membergrid">  
+    </div>
+
+    <script>
+      'use strict';
+
+      {
+
+        // 登録メンバーリスト
+        const MemberDatas =
+        [
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＫＢ",
+            "name": "久保　直隆<span> - kubo naotaka - </span>",
+            "qa1": "ベスト：04:40:07",
+            "qa2": "大会：富山マラソン2019",
+            "qa3": "好きなお酒：ハイボール！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＸＸくん",
+            "name": "ＸＸ　ＸＸ<span> - xxxx xxxx - </span>",
+            "qa1": "ベスト：03:52:07",
+            "qa2": "大会：ＸＸマラソン2019",
+            "qa3": "好きなお酒：日本酒！！",
+          },
+          {
+            "img1": "img/member2.png",
+            "img2": "img/member3.png",
+            "nickname": "ＹＹ",
+            "name": "ＹＹ　ＹＹ<span> - yyyy xxxx - </span>",
+            "qa1": "ベスト：02:52:07",
+            "qa2": "大会：ＹＹマラソン2019",
+            "qa3": "好きなお酒：ウイスキー！！",
+          },
+        ]
+
+        let member_no = 0;
+
+        // memberクラス
+        class Member {
+          constructor() {
+            // メンバーカード
+            const section = document.createElement('section');
+            section.classList.add('memberitem');
+
+            // 画像
+            const div = document.createElement('div');
+            div.classList.add('img-box');
+            this.img_1 = document.createElement('img');
+            this.img_1.src = MemberDatas[member_no]['img1'];
+
+            this.img_2 = document.createElement('img');
+            this.img_2.src = MemberDatas[member_no]['img2'];
+            this.img_2.classList.add('active');
+
+            div.appendChild(this.img_1);
+            div.appendChild(this.img_2);
+            section.appendChild(div);
+
+            // ニックネーム
+            const h1 = document.createElement('h1');
+            h1.innerText = MemberDatas[member_no]['nickname'];
+            section.appendChild(h1);
+
+            // 名前
+            const h2 = document.createElement('h2');
+            h2.innerHTML = MemberDatas[member_no]['name'];
+            section.appendChild(h2);
+
+            // 自己紹介
+            const ul = document.createElement('ul');
+            const li1 = document.createElement('li');
+            li1.innerText = MemberDatas[member_no]['qa1'];
+            const li2 = document.createElement('li');
+            li2.innerText = MemberDatas[member_no]['qa2'];
+            const li3 = document.createElement('li');
+            li3.innerText = MemberDatas[member_no]['qa3'];
+            ul.appendChild(li1);
+            ul.appendChild(li2);
+            ul.appendChild(li3);
+            section.appendChild(ul);
+
+            const membergrid = document.querySelector('.membergrid');
+            membergrid.appendChild(section);
+
+          }
+          
+        }
+
+        // Memberクラスを新規生成する
+        const members = [];
+
+        for (  var i = 0;  i < MemberDatas.length;  i++  ) {
+          member_no = i;
+          members.push(new Member());
+        }
+
+      }
+    </script>
+
+  </body>
+</html>
